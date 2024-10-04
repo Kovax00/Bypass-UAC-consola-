@@ -1,0 +1,15 @@
+## Este comando colocara el control de configuracion del usuario (UAC) en valor 0 (Desactivado)
+
+New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 0 -Force
+
+## Luego reincia la maquina objetivo
+
+shutdown -r -t 0
+
+## ¿Como volver a su estado normal? el mismo comando pero con los valores 3 o 4 dependiendo como desees tu seguridad
+
+New-ItemProperty -Path HKLM:Software\Microsoft\Windows\CurrentVersion\policies\system -Name EnableLUA -PropertyType DWord -Value 4 -Force
+
+o
+
+en la busqueda de windows escribe UAC y dejalo en "Predeterminado" o "notificarme siempre"
